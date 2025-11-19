@@ -1,59 +1,124 @@
-/* General page styles */
+/* --- GENERAL PAGE STYLING --- */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    line-height: 1.6;
-    background-color: #f9f9f9; /* light background, optional */
-    color: #333; /* dark text for readability */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font stack */
+    background-color: #f4f4f9; /* Very light grey/blue background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Centers everything by default */
 }
 
-/* Section spacing */
-section {
-    margin-bottom: 20px;
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple/Blue Gradient */
+    color: white;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* Headings */
 h1 {
-    font-size: 2em;
-    margin-bottom: 0.5em;
+    margin: 0;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-h2 {
-    font-size: 1.5em;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+section {
+    background: white;
+    max-width: 800px;
+    margin: 20px auto; /* Centers the box */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* Image row */
+ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1em;
+}
+
+/* --- THE IMAGE GALLERY --- */
 .image-row {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    justify-content: space-between; /* optional: spreads images nicely */
+    justify-content: center; /* Centers images in the row */
+    gap: 20px; /* Space between images */
+    padding: 20px;
+    flex-wrap: wrap; /* Allows wrapping on mobile phones */
 }
 
 .image-row img {
     width: 30%;
-    border-radius: 6px;
-    display: block;
+    min-width: 200px; /* Stops them getting too small on phones */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Drop shadow */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+    border: 4px solid white;
 }
 
-/* Links */
-a {
-    color: blue;
-    text-decoration: none;
+/* The Zoom Effect */
+.image-row img:hover {
+    transform: scale(1.05); /* Grows 5% larger */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Shadow gets deeper */
 }
 
-a:hover {
-    text-decoration: underline;
+/* --- THE GEMINI SECTION --- */
+/* Making your shout-out look special */
+.gemini-box {
+    background-color: #e0f7fa;
+    border: 2px solid #26c6da;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 40px auto;
+    max-width: 600px;
 }
 
-/* Footer */
-footer {
-    margin-top: 30px;
-    padding-top: 10px;
-    border-top: 1px solid #ccc;
+/* --- THE FULL PAGE VIEW (MODAL) --- */
+#fullPageView {
+    display: none;
+    position: fixed; 
+    z-index: 9999; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(255, 255, 255, 0.98); /* Slightly see-through white */
+    overflow: auto; 
     text-align: center;
-    font-size: 0.9em;
-    color: #555;
+    padding-top: 40px;
+    backdrop-filter: blur(5px); /* Blurs the background content */
+}
+
+#fullImage {
+    max-width: 90%;
+    max-height: 80vh; /* Ensures image doesn't go off bottom of screen */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-bottom: 30px;
+}
+
+/* Styling the "Go Back" link to look like a cool button */
+.back-text {
+    display: inline-block;
+    background-color: #ff6b6b; /* Nice coral red */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px; /* Pill shape */
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.back-text:hover {
+    background-color: #ee5253;
+    transform: translateY(-2px); /* Moves up slightly */
 }
