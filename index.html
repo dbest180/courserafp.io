@@ -6,14 +6,70 @@
     <title>Coursera Final Project</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* --- EXISTING STYLES (Assumed based on your description) --- */
+        .image-row img {
+            width: 30%; /* This keeps them small on the main page */
+            margin: 10px;
+            cursor: pointer; /* Changes cursor to hand icon */
+            transition: 0.2s;
+        }
+        
+        .image-row img:hover {
+            opacity: 0.8;
+        }
+
+        /* --- NEW STYLES FOR THE FULL PAGE VIEW --- */
+        
+        /* The container that covers the whole screen */
+        #fullPageView {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 9999; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: white; /* White background like a normal page */
+            overflow: auto; /* Allows scrolling if image is very tall */
+            text-align: center; /* Centers the image and text */
+            padding-top: 20px;
+        }
+
+        /* The large image inside the view */
+        #fullImage {
+            max-width: 95%; /* Ensures it fits width-wise */
+            height: auto;   /* Maintains aspect ratio */
+            display: block;
+            margin: 0 auto; /* Centers the image block */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* The "Go Back" Text Link */
+        .back-text {
+            display: inline-block;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            font-size: 24px;
+            font-family: sans-serif;
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .back-text:hover {
+            color: darkblue;
+        }
+    </style>
 </head>
 <body>
+
     <header>
         <h1>Welcome to DBest's Page</h1>
         <p>About me, my family, and our pets</p>
     </header>
     <main>
-        <!--Just getting jiggy with this html thingy-->
         <section>
             <h2>I have Two cats and a dog</h2>
             <ul>
@@ -22,22 +78,50 @@
                 <li>Lylah (Lovely Lazy Dog)</li>
             </ul>
         </section>
+
         <div class="image-row">
-            <img src="img/CatsandDog.jpg" alt="The Cats and Dog">
-            <img src="img/DBestPic.png" alt="Our DBestPic">
-            <img src="img/Gemini.jpg" alt="Gemini">
+            <img src="img/CatsandDog.jpg" alt="The Cats and Dog" onclick="openView(this)">
+            <img src="img/DBestPic.png" alt="Our DBestPic" onclick="openView(this)">
+            <img src="img/Gemini.jpg" alt="Gemini" onclick="openView(this)">
         </div>
+
         <div>
             <h3>I used Google's Gemini app to make the pics above</h3>
             <p>
-  <a href="#" onclick="window.open('https://gemini.google.com', '_blank'); return false;">
-    Click here for Gemini's AI
-  </a>
-</p>
+              <a href="#" onclick="window.open('https://gemini.google.com', '_blank'); return false;">
+                Click here for Gemini's AI
+              </a>
+            </p>
         </div>
     </main>
     <footer>
         <p>&copy; 2025 DBest</p>
     </footer>
+
+    <div id="fullPageView">
+        <img id="fullImage" src="" alt="Full Size Image">
+        <br>
+        <span class="back-text" onclick="closeView()">Go back to the page</span>
+    </div>
+
+    <script>
+        // Function to hide the main scrollbar and show the full image view
+        function openView(element) {
+            var viewer = document.getElementById("fullPageView");
+            var fullImg = document.getElementById("fullImage");
+            
+            // Set the source of the large image to match the clicked image
+            fullImg.src = element.src;
+            
+            // Show the viewer
+            viewer.style.display = "block";
+        }
+
+        // Function to hide the viewer and return to main page
+        function closeView() {
+            document.getElementById("fullPageView").style.display = "none";
+        }
+    </script>
+
 </body>
 </html>
